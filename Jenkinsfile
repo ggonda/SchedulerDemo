@@ -11,7 +11,7 @@ pipeline {
   stages {
   stage('Build application'){
 steps{
-bat "mvn clean install"
+ bat 'mvn -B -U -e -V clean -DskipTests package'
 }
 }
      stage('Deploy Development') {
@@ -20,7 +20,7 @@ bat "mvn clean install"
         APP_NAME = 'Scheduler-test'
       }
       steps {
-            bat 'mvn package deploy -DmuleDeploy -Dmule.version="%MULE_VERSION%" -Dcloudhub.app="%APP_NAME%" -Dcloudhub.environment="%ENVIRONMENT%" -Dcloudhub.bg="%BG%" -Dcloudhub.worker="%WORKER%" -Danypoint.username="%DEPLOY_CREDS_USR%" -Danypoint.password="%DEPLOY_CREDS_PSW%"'
+             bat 'mvn -U -V -e -B -DskipTests deploy -DmuleDeploy -Dmule.version="%MULE_VERSION%" -Danypoint.username="%DEPLOY_CREDS_USR%" -Danypoint.password="%DEPLOY_CREDS_PSW%" -Dcloudhub.app="%APP_NAME%" -Dcloudhub.environment="%ENVIRONMENT%" -Dcloudhub.bg="%BG%" -Dcloudhub.worker="%WORKER%"'
       }
     }
     
