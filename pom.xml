@@ -37,6 +37,7 @@
 						<applicationName>${cloudhub.app}</applicationName>
 						<businessGroup>${cloudhub.bg}</businessGroup>
 						<workerType>Mirco</workerType>
+						<workers>1</workers>
 					</cloudHubDeployment>
 				</configuration>
 			</plugin>
